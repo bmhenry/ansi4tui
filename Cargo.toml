@@ -1,0 +1,11 @@
+[package]
+name = "ansi4tui"
+version = "0.1.0"
+authors = ["Brandon Henry <brandon@bhenry.dev>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+termwiz = "0.9"
+tui = "^0.10"
