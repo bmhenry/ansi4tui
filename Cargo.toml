@@ -3,8 +3,14 @@ name = "ansi4tui"
 version = "0.1.0"
 authors = ["Brandon Henry <brandon@bhenry.dev>"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/bmhenry/ansi4tui"
+documentation = "https://docs.rs/ansi4tui/"
+description = """
+ANSI terminal code to TUI Text Style converter
+"""
+keywords = ["ansi", "tui"]
 
 [dependencies]
 termwiz = "0.9"
