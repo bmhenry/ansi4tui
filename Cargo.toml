@@ -15,3 +15,6 @@ keywords = ["ansi", "tui"]
 [dependencies]
 termwiz = "0.9"
 tui = "^0.10"
+
+[dev-dependencies]
+termion = "1.5"
