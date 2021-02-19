@@ -1,6 +1,6 @@
 [package]
 name = "ansi4tui"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Brandon Henry <brandon@bhenry.dev>"]
 edition = "2018"
 license = "MIT"
@@ -13,8 +13,8 @@ ANSI terminal code to TUI Text Style converter
 keywords = ["ansi", "tui"]
 
 [dependencies]
-termwiz = "0.9"
-tui = "^0.10"
+termwiz = "0.11.0"
+tui = "0.14"
 
 [dev-dependencies]
 termion = "1.5"
