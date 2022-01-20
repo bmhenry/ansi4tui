@@ -16,7 +16,7 @@
 //!
 
 use termwiz::cell::{Blink, Intensity, Underline};
-use termwiz::color::{ColorSpec, RgbColor};
+use termwiz::color::ColorSpec;
 use termwiz::escape::{
     csi::{Sgr, CSI},
     parser::Parser,
@@ -65,9 +65,6 @@ pub fn bytes_to_text<'a, B: AsRef<[u8]>>(bytes: B) -> Text<'a> {
                 // finish the current span
                 current_line.push(Span::styled(span_text, span_style.into()));
                 span_text = String::new();
-
-                // set rgbcolor
-                let colors = RgbColor::new_8bpc(0x0b, 0x00, 0x22).to_tuple_rgb8();
 
                 match sgr {
                     Sgr::Reset => span_style = Style::default(),
@@ -124,15 +121,19 @@ pub fn bytes_to_text<'a, B: AsRef<[u8]>>(bytes: B) -> Text<'a> {
                     Sgr::Foreground(c) => match c {
                         ColorSpec::Default => span_style = span_style.fg(Color::Reset),
                         ColorSpec::PaletteIndex(i) => span_style = span_style.fg(Color::Indexed(i)),
-                        ColorSpec::TrueColor(_rgb) => {
-                            span_style = span_style.bg(Color::Rgb(colors.0, colors.1, colors.2))
+                        ColorSpec::TrueColor(rgb) => {
+                            let rgb_tuple = rgb.to_tuple_rgb8();
+                            span_style =
+                                span_style.fg(Color::Rgb(rgb_tuple.0, rgb_tuple.1, rgb_tuple.2));
                         }
                     },
                     Sgr::Background(c) => match c {
                         ColorSpec::Default => span_style = span_style.bg(Color::Reset),
                         ColorSpec::PaletteIndex(i) => span_style = span_style.bg(Color::Indexed(i)),
-                        ColorSpec::TrueColor(_rgb) => {
-                            span_style = span_style.bg(Color::Rgb(colors.0, colors.1, colors.2))
+                        ColorSpec::TrueColor(rgb) => {
+                            let rgb_tuple = rgb.to_tuple_rgb8();
+                            span_style =
+                                span_style.bg(Color::Rgb(rgb_tuple.0, rgb_tuple.1, rgb_tuple.2));
                         }
                     },
                     _ => {}

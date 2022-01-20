@@ -28,7 +28,8 @@ fn main() -> Result<(), Box<dyn Error>> {
 
             // run a Command and retrieve stdout as bytes
             let c = Command::new("bat")
-                .arg("/etc/hosts")
+                .arg("--color=always")
+                .arg("/Users/uesugi/dotfiles/bin/rot.py")
                 .output()
                 .unwrap();
 
