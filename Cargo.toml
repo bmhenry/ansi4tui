@@ -16,10 +16,10 @@ version = "0.2.1"
 termwiz = "0.15.0"
 
 [target.'cfg(any(unix, macos))'.dependencies]
-tui = {version = "0.16", default-features = true, features = ['crossterm']}
+tui = {version = "0.19", default-features = true, features = ['crossterm']}
 
 [target.'cfg(any(windows))'.dependencies]
-tui = {version = "0.16", default-features = false, features = ['crossterm']}
+tui = {version = "0.19", default-features = false, features = ['crossterm']}
 
 [target.'cfg(any(unix, macos))'.dev-dependencies]
 crossterm = "0.22"
@@ -27,4 +27,4 @@ termion = "1.5"
 
 [target.'cfg(any(windows))'.dev-dependencies]
 crossterm = "0.22"
-tui = {version = "0.16", default-features = false, features = ['crossterm']}
+tui = {version = "0.19", default-features = false, features = ['crossterm']}
